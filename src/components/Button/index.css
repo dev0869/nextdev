@@ -1,0 +1,30 @@
+.navButton button {
+  cursor: pointer;
+ 
+  transition: all 0.2s;
+  padding: 10px 16px !important;
+  border-radius: 10px;
+  background: var(--effect-red-color);
+  color: white;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+
+}
+.userbtn {
+  padding: 6px 9px 13px 0px !important;
+}
+
+.navButton button > svg {
+  width: 24px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navButton button:hover svg {
+  transform: translateX(5px);
+}
+
+.navButton button:active {
+  transform: scale(0.95);
+}

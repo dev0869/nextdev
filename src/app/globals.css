@@ -2,26 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --heading-size: 24px;
+  --bg-black: "#303030";
+  --effect-red-color: linear-gradient(
+    95.69deg,
+    #ac0000 0,
+    #f00 26.35%,
+    #ff3b3b 50.83%,
+    #f00 72.71%,
+    #f00 100%
+  );
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dflex{
+  @apply flex justify-between items-center
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.black{
+  @apply text-[#212427]
 }

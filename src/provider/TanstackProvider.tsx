@@ -1,4 +1,5 @@
 "use client";
+import { ChildProps } from "@/types/Types";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
