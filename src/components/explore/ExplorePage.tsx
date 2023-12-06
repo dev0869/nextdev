@@ -9,13 +9,13 @@ const ExplorePage = () => {
   const product = useAppSelector((st) => st.products.data);
   console.log(product);
 
-  const filteredProducts = useCallback(() => {
-    if (handleview === "bike") {
-      return product.filter((pro) => pro.price === "bike").slice(0, 3);
-    } else {
-      return product.filter((pro) => pro.price === "scooter").slice(0, 3);
-    }
-  }, [handleview, product]);
+    const filteredProducts = useCallback(() => {
+        if (handleview === "bike") {
+        return product.filter((pro) => pro.price === "bike").slice(0, 3);
+        } else {
+        return product.filter((pro) => pro.price === "scooter").slice(0, 3);
+        }
+    }, [handleview, product]);
 
   return (
     <div className="container">
@@ -52,9 +52,7 @@ const ExplorePage = () => {
           Scooter
         </button>
       </div>
-{
-    product.map((ele)=>ele.name)
-}
+
       {/* {handleview === "bike" && (
         <div className="flex flex-wrap justify-center">
           {filteredProducts.map((ele, i) => {
