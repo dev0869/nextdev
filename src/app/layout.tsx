@@ -18,7 +18,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          <TanstackProvider>{children}</TanstackProvider>
+          <TanstackProvider>
+            <div className="flex justify-center">
+              <div className="container">
+            {children}
+
+              </div>
+            </div>
+            
+            </TanstackProvider>
         </ReduxProvider>
       </body>
     </html>
