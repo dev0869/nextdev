@@ -22,6 +22,9 @@
 .dflex{
   @apply flex justify-between items-center
 }
+.cflex{
+  @apply flex justify-center items-center
+}
 .black{
   @apply text-[#212427]
 }

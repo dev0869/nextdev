@@ -1,9 +1,14 @@
 import { getProducts } from "@/apis/ProductApi";
+import { ProductProps } from "@/types/Types";
 import { createSlice } from "@reduxjs/toolkit";
 
+type initialProps = {
+  data: ProductProps[];
+};
 const initialState = {
   data: [],
-}
+} as initialProps;
+
 export const productSlice = createSlice({
   name: "product",
   initialState,
@@ -14,5 +19,5 @@ export const productSlice = createSlice({
   },
 });
 
-export const {getProductsData}=productSlice.actions;
+export const { getProductsData } = productSlice.actions;
 export default productSlice.reducer;

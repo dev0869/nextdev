@@ -1,21 +1,22 @@
-'use client'
+"use client";
+import Image from "next/image";
 import Link from "next/link";
-import { useState, useCallback } from "react";
-import slugify from "slugify";
+import { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
+
+export const getButtonClass = (currentView: string, targetView: string) =>
+  `text-xl font-[600] mb-2 mx-2 border-b-2 px-1 ${
+    currentView === targetView
+      ? "border-red-600 text-red-600"
+      : "border-gray-800 text-gray-800"
+  }`;
 
 const ExplorePage = () => {
   const [handleview, setHandleview] = useState("bike");
   const product = useAppSelector((st) => st.products.data);
-  console.log(product);
-
-    const filteredProducts = useCallback(() => {
-        if (handleview === "bike") {
-        return product.filter((pro) => pro.price === "bike").slice(0, 3);
-        } else {
-        return product.filter((pro) => pro.price === "scooter").slice(0, 3);
-        }
-    }, [handleview, product]);
+  const selectProducts = product
+    .filter((ele) => ele.type === handleview)
+    .slice(0, 3);
 
   return (
     <div className="container">
@@ -29,77 +30,46 @@ const ExplorePage = () => {
         Checkout the range of our scooters and motorcycles with exciting
         features and latest technology.
       </p>
+
       <div className="p-2 flex justify-center">
         <button
           onClick={() => setHandleview("bike")}
-          className={
-            handleview === "bike"
-              ? "text-xl font-[600] mb-2 mx-2 border-b-2 px-1 border-red-600 text-red-600"
-              : "text-xl font-[600] mb-2 mx-2 border-b-2 px-1 border-gray-800 text-gray-800"
-          }
+          className={getButtonClass(handleview, "bike")}
         >
-          {" "}
           Bike
         </button>
         <button
           onClick={() => setHandleview("scooter")}
-          className={
-            handleview === "scooter"
-              ? "text-xl font-[600] mb-2 mx-2 border-b-2 px-1 border-red-600 text-red-600"
-              : "text-xl font-[600] mb-2 mx-2 border-b-2 px-1 border-gray-800 text-gray-800"
-          }
+          className={getButtonClass(handleview, "scooter")}
         >
           Scooter
         </button>
       </div>
-
-      {/* {handleview === "bike" && (
-        <div className="flex flex-wrap justify-center">
-          {filteredProducts.map((ele, i) => {
-            const slug = slugify(ele.name, {
-              lower: true,
-              strict: true,
-            });
-            return (
-              <div className="scooterimg flex flex-wrap flex-col" key={i}> */}
-                {/* <Link state={ele} to={`/e-bike/${slug}`}> */}
-                  {/* <LazyLoadImage
-                    alt={"img"}
-                    effect="blur"
-                    src={ele.images[1]}
-                    width={400}
-                  />
-                  <h2 style={{ textAlign: "center" }}>{ele.name}</h2> */}
-                {/* </Link> */}
-              {/* </div>
-            );
-          })}
-        </div>
-      )} */}
-      {/* {handleview === "scooter" && (
-        <div className="flex flex-wrap justify-center">
-          {filteredProducts.map((ele, i) => {
-            const slug = slugify(ele.name, {
-              lower: true,
-              strict: true,
-            });
-            return (
-              <div className="scooterimg flex flex-wrap flex-col" key={i}> */}
-                {/* <Link state={ele} to={`/e-bike/${slug}`}> */}
-                  {/* <LazyLoadImage
-                    alt={"img"}
-                    effect="blur"
-                    src={ele.images[1]}
-                    width={400}
-                  /> */}
-{/* 
-                  <h2 style={{ textAlign: "center" }}>{ele.name}</h2> */}
-                {/* </Link> */}
-              {/* </div>
-            );
-          })}
-        </div> */}
-      {/* )} */}
+      <div className="dflex">
+        {selectProducts?.map((ele, i) => {
+          const slug = ele.name;
+          return (
+            <>
+              <Link
+                href={{
+                  pathname: `/products/${handleview}/${slug}`,
+                  // query:ele,
+                }}
+                className=" cflex flex-wrap flex-col"
+                key={i}
+              >
+                <Image
+                  alt={"img"}
+                  src={ele.images[1]}
+                  width={400}
+                  height={400}
+                />
+                <h2 style={{ textAlign: "center" }}>{ele.name}</h2>
+              </Link>
+            </>
+          );
+        })}
+      </div>
     </div>
   );
 };

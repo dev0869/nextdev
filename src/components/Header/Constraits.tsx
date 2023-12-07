@@ -19,12 +19,12 @@ export const Routes:RouteProps[] = [
   },
   {
     name: "E-SCOOTER",
-    path: "/e-scooter",
+    path: "/products/scooter",
     icon: <GiScooter/>,
   },
   {
     name: "E-BIKE",
-    path: "/e-bike",
+    path: "/products/bike",
     icon: <RiMotorbikeFill />,
   },
   {
