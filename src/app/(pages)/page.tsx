@@ -6,7 +6,7 @@ import ExplorePage from "@/components/explore/ExplorePage";
 import { useQuery } from "@tanstack/react-query";
 import { useAppDispatch } from "@/redux/hooks";
 import { getProductsData } from "@/redux/Features/ProductSlice";
-export default function Home() {
+export default function Page() {
   const dispatch = useAppDispatch();
   const { isPending, isSuccess, error, data } = useQuery({
     queryKey: ["products"],

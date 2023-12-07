@@ -53,7 +53,7 @@ const ExplorePage = () => {
               <Link
                 href={{
                   pathname: `/products/${handleview}/${slug}`,
-                  // query:ele,
+                  query: { id: ele._id },
                 }}
                 className=" cflex flex-wrap flex-col"
                 key={i}
@@ -63,6 +63,9 @@ const ExplorePage = () => {
                   src={ele.images[1]}
                   width={400}
                   height={400}
+                  quality={50}
+                 priority
+              
                 />
                 <h2 style={{ textAlign: "center" }}>{ele.name}</h2>
               </Link>
