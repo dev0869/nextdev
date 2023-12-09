@@ -1,34 +1,31 @@
 "use client";
-import './index.css'
+import ThreedProduct from "@/components/threedProduct/ThreedProduct";
+import "./index.css";
 import { useAppSelector } from "@/redux/hooks";
-import Image from 'next/image';
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-export default function Page({ params }: { params: { productType:string,slug: string[] } }) {
+export default function Page({
+  params,
+}: {
+  params: { productType: string; slug: string[] };
+}) {
   const searchParams = useSearchParams();
-  const productId = searchParams.get('id')
+  const productId = searchParams.get("id");
   const products = useAppSelector((st) => st.products.data);
-  console.log(products);
-  const ProductDetails = products.find(
-    (ele) => ele._id === productId
-  );
+  const ProductDetails = products.find((ele) => ele._id === productId);
 
-  console.log(ProductDetails);
-  return <>
-    <div className="productMain w-full">
+  return (
+    <>
+      <div className="productMain w-full h-[100dvh]">
         <Image
           src={`${ProductDetails?.bannerimg}`}
           alt="image"
-          
-          width={9200}
-          height={1200}
-          className='w-[100vw] h-[100vh]'
-       
-
+          width={900}
+          height={200}
+          className="w-[100dvw] h-[100dvh]"
         />
       </div>
-      {/* {productData && <Rotate data={productData} />} */}
-    
-    </>;
+      {ProductDetails && <ThreedProduct data={ProductDetails} />}
+    </>
+  );
 }
-
-

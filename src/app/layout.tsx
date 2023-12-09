@@ -4,6 +4,8 @@ import "./globals.css";
 import MainLayout from "@/components/layout/MainLayout";
 import { TanstackProvider } from "../provider/TanstackProvider";
 import { ReduxProvider } from "../provider/ReactProvider";
+import 'swiper/css';
+import 'swiper/css/bundle';
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",

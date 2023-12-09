@@ -1,32 +1,50 @@
-'use client'
-import './index.css'
+"use client";
+import "./index.css";
 import Image from "next/image";
-import Carousel from "react-bootstrap/Carousel";
+
+
 import { banner5, banner6, banner7 } from "../../assets/images/banner";
 import { bycicle, telephone, setting } from "../../assets/images/icon";
 import Link from "next/link";
+import { SwiperSlide, Swiper } from "swiper/react";
 export const Carasol = () => {
   const imgs = [banner7, banner5, banner6];
 
-  return (  
+  return (
     <div className="border">
-      <Carousel interval={1000}>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+       autoplay={true}
+       
+      >
         {imgs.map((ele, id) => (
-          <Carousel.Item key={id}>
+          <SwiperSlide key={id}>
             <Image
               className="d-block w-100"
               loading="lazy"
               src={ele}
               alt={`Slide ${id + 1}`}
             />
-          </Carousel.Item>
+          </SwiperSlide>
         ))}
-      </Carousel>
+      </Swiper>
+
+{/* <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      <SwiperSlide>Slide 1</SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+    </Swiper> */}
     </div>
   );
 };
-
-
 
 export const HelpSection = () => {
   const help = [
@@ -54,8 +72,10 @@ export const HelpSection = () => {
           <h1
             className="text-start h2 md:h1 text-uppercase col-12 text-[2rem] md:text-[3rem]  italic"
             style={{ fontWeight: "1000", fontFamily: "speed", color: "red" }}
-          >
+          > 
             How we can help You ?
+
+            
           </h1>
           <div className="col-12 justify-center flex mt-8">
             {help.map((e, i) => {

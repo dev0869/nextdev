@@ -64,8 +64,6 @@ const ExplorePage = () => {
                   width={400}
                   height={400}
                   quality={50}
-                 priority
-              
                 />
                 <h2 style={{ textAlign: "center" }}>{ele.name}</h2>
               </Link>

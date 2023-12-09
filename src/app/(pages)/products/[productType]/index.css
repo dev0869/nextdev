@@ -1,0 +1,9 @@
+
+  .scootermain {
+    font-family: speed;
+    font-size: 27px;
+    color: gray;
+  }
+  .scooterimg:hover {
+    color: orangered;
+  }
